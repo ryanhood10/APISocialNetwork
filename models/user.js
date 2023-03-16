@@ -44,12 +44,12 @@ const userSchema = new mongoose.Schema({
 
         },
 
-        thoughts:{
+        thoughts: [
+                {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'Thought'
-
-
-        },
+        }
+        ],
 
         friends: [friendSchema],
 

@@ -30,6 +30,7 @@ app.use(express.json());
 // import route files
 const subscribersRoute = require('./routes/subscribers');
 const friendsRoute = require('./routes/friendsRoute');
+const thoughtsRoute = require('./routes/thoughtsRoute');
 
 
 
@@ -37,7 +38,10 @@ const friendsRoute = require('./routes/friendsRoute');
 app.use('/subscribers', subscribersRoute);
 
 //query 'localhost:3000/:userID of that friend' 
-app.use('/api/users/:userId/friends', friendsRoute);
+app.use('/subscribers/:userId/friends', friendsRoute);
+
+//query localhost:3000/thoughts
+app.use('/thoughts', thoughtsRoute);
 
 
 //run the app on localhost3000
