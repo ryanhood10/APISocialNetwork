@@ -1,23 +1,4 @@
-` guidline:
-username
-        string
-        unique
-        required Trimmed
 
-email
-        string
-        required
-        unique
-        must match a valid email adress (look into mongooses matching validation)
-
-
-thoughts
-        array of _id alues refrencing the thought model
-        
-friends
-        array of _id values referencing the user model (self reference)        
-
-`
 const mongoose = require('mongoose')
 
 //create a schema
@@ -85,3 +66,27 @@ const User = mongoose.model('User', userSchema);
 
 //export the schema model
 module.exports = User
+
+
+
+
+`NOTES  guidline:
+username
+        string
+        unique
+        required Trimmed
+
+email
+        string
+        required
+        unique
+        must match a valid email adress (look into mongooses matching validation)
+
+
+thoughts
+        array of _id alues refrencing the thought model
+        
+friends
+        array of _id values referencing the user model (self reference)        
+
+`
