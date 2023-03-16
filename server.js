@@ -13,10 +13,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/subscribers',
 }
 );
 
-
-const db = mongoose.connection
 //hook up some events to the connection
  
+const db = mongoose.connection
+
 //db.on error is for if theres an error connecting to the server, it will console.log the error
 db.on('error',(error) => console.log(error));
 
@@ -27,12 +27,17 @@ db.once('open', () => console.log('Connected to Database'));
 //allow the app to run JSON
 app.use(express.json());
 
+// import route files
 const subscribersRoute = require('./routes/subscribers');
+const friendsRoute = require('./routes/friendsRoute');
+
 
 
 //query'localhost:3000/subscribers' with app.use
 app.use('/subscribers', subscribersRoute);
 
+//query 'localhost:3000/:userID of that friend' 
+app.use('/api/users/:userId/friends', friendsRoute);
 
 
 //run the app on localhost3000

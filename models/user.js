@@ -21,6 +21,23 @@ friends
 const mongoose = require('mongoose')
 
 //create a schema
+
+// We are adding the friendSchema in here as a subdocument, we will refer to it inside of the userSchema
+const friendSchema = new mongoose.Schema({
+        friendId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+          required: true
+        },
+        dateAdded: {
+          type: Date,
+          required: true,
+          default: Date.now
+        }
+      });
+
+
+// create User Schema      
 const userSchema = new mongoose.Schema({
         username:{
                 type: String,
@@ -52,12 +69,9 @@ const userSchema = new mongoose.Schema({
 
 
         },
-        friends:{
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'User'
 
+        friends: [friendSchema],
 
-        },
         subscribeDate:{
                 type: Date,
                 required: true,
