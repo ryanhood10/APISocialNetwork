@@ -20,6 +20,7 @@ friends
 `
 const mongoose = require('mongoose')
 
+//create a schema
 const userSchema = new mongoose.Schema({
         username:{
                 type: String,
@@ -65,5 +66,8 @@ const userSchema = new mongoose.Schema({
 
 })
 
-//export the schema
-module.exports = mongoose.module('user', userSchema)
+//create a model based on the schema
+const User = mongoose.model('User', userSchema);
+
+//export the schema model
+module.exports = User
